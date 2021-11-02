@@ -1,5 +1,5 @@
-import { SuccessResponse } from "src/domain/global/common/SuccessResponse";
-import { SuccessCode } from "src/domain/global/common/SuccessCode";
+import { SuccessResponse } from "src/global/common/SuccessResponse";
+import { SuccessCode } from "src/global/common/SuccessCode";
 
 export class UserResponse extends SuccessResponse {
 	private token: string;
