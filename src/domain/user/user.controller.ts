@@ -1,13 +1,20 @@
-import { Body, Controller, Post, Request, UseGuards } from "@nestjs/common";
-import { STATUS_CODES } from "http";
+import {
+	Body,
+	ClassSerializerInterceptor,
+	Controller,
+	Post,
+	Request,
+	UseGuards,
+	UseInterceptors
+} from "@nestjs/common";
 import { AuthService } from "../auth/auth.service";
-import { JwtGuard } from "../auth/guards/jwtGuard.guard";
 import { LocalAuthGuard } from "../auth/guards/localAuthGuard.guard";
-import { SuccessCode } from "../global/common/SuccessCode";
+import { SuccessCode } from "../../global/common/SuccessCode";
 import { CreateUserDto } from "./dto/createUser.dto";
 import { UserResponse } from "./dto/UserResponse.dto";
 import { UserService } from "./user.service";
 
+@UseInterceptors(ClassSerializerInterceptor)
 @Controller()
 export class UserController {
 	constructor(
