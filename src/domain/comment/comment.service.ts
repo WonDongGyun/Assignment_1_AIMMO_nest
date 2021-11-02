@@ -5,6 +5,7 @@ import { NotFoundUserException } from "../board/exception/NotFoundUserException"
 import { Comments } from "../entities/comments.entity";
 import { Users } from "../entities/users.entity";
 import { CommentDto } from "./dto/comment.dto";
+import { RecommentDto } from "./dto/recomment.dto";
 import { updateComment } from "./dto/updateComment.dto";
 import { commentVerifyException } from "./exception/commentVerifyException";
 import { NotFoundCommentException } from "./exception/NotFoundCommentException";
@@ -119,5 +120,45 @@ export class CommentService {
 		const comment = await this.commentVerify(commentId, loginUser);
 		await this.commentsRepository.delete({ commentId: comment.commentId });
 		return null;
+	}
+
+	// 대댓글 생성
+	async createRecomment(loginUser, recommentDto: RecommentDto) {
+		const findUser = await this.usersRepository.findOne({
+			userId: loginUser.userId
+		});
+
+		if (!findUser) {
+			throw new NotFoundUserException();
+		}
+
+		const comment: Comments = new Comments();
+		comment.boardId = recommentDto.boardId;
+		comment.parentId = recommentDto.parentId;
+		comment.contents = recommentDto.contents;
+		comment.depth = recommentDto.depth;
+		comment.userId = findUser.userId;
+		comment.commentId = await this.incrementCommentId();
+
+		return await this.commentsRepository.save(comment);
+	}
+
+	// 대댓글 목록
+	async getRecommentList(parentId: number, page: number) {
+		const take = 10;
+		const skip = page * 10 || 0;
+		const [pageRecomment, total] =
+			await this.commentsRepository.findAndCount({
+				where: {
+					parentId: parentId
+				},
+				order: {
+					commentId: "DESC"
+				},
+				take: take,
+				skip: skip
+			});
+
+		return [pageRecomment, total];
 	}
 }

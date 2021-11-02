@@ -20,6 +20,7 @@ import { Comments } from "../entities/comments.entity";
 import { CommentService } from "./comment.service";
 import { CommentDto } from "./dto/comment.dto";
 import { commentResponse } from "./dto/commentResponse.dto";
+import { RecommentDto } from "./dto/recomment.dto";
 import { updateComment } from "./dto/updateComment.dto";
 
 @UseInterceptors(ClassSerializerInterceptor)
@@ -74,6 +75,28 @@ export class CommentController {
 		return commentResponse.return(
 			SuccessCode.deleteComment(),
 			await this.commentService.deleteComment(commentId, req.user)
+		);
+	}
+
+	// 대댓글 작성
+	@UseGuards(JwtGuard)
+	@Post("/recomment")
+	async writeRecomment(@Request() req, @Body() recommentDto: RecommentDto) {
+		return commentResponse.return(
+			SuccessCode.writeComment(),
+			await this.commentService.createRecomment(req.user, recommentDto)
+		);
+	}
+
+	// 대댓글 목록
+	@Get("/recomment")
+	async getRecommentList(
+		@Query("parentId") parentId: number,
+		@Query("page") page: number
+	) {
+		return commentResponse.return(
+			SuccessCode.getComment(),
+			await this.commentService.getRecommentList(parentId, page)
 		);
 	}
 }
