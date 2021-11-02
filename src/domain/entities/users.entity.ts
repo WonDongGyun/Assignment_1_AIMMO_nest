@@ -24,16 +24,6 @@ export class Users {
 	@Column({ type: "varchar" })
 	userName!: string;
 
-	@OneToMany(() => Boards, (boards) => boards.users, {
-		onDelete: "CASCADE"
-	})
-	boards?: Boards[];
-
-	@OneToMany(() => Comments, (comments) => comments.users, {
-		onDelete: "CASCADE"
-	})
-	comments?: Comment[];
-
 	@CreateDateColumn({ type: "datetime" })
 	createdDt: Date;
 

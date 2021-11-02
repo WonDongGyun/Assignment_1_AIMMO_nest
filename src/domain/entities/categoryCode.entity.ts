@@ -9,7 +9,7 @@ import {
 } from "typeorm";
 import { Boards } from "./boards.entity";
 
-@Entity("category_code")
+@Entity("categorycodes")
 export class CategoryCode {
 	@ObjectIdColumn({ type: "varchar" })
 	id!: ObjectID;
@@ -19,9 +19,6 @@ export class CategoryCode {
 
 	@Column({ type: "varchar" })
 	categoryName: string;
-
-	@OneToMany((type) => Boards, (boards) => boards.categoryCode)
-	boards: Boards[];
 
 	@CreateDateColumn({ type: "datetime" })
 	createdDt: Date;
