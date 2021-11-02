@@ -34,7 +34,7 @@ export class Boards {
 	contents!: string;
 
 	@Column({ type: "varchar" })
-	readUser!: object;
+	readUser?: object;
 
 	@CreateDateColumn({ type: "datetime" })
 	createdDt: Date;

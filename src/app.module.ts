@@ -7,6 +7,7 @@ import { ConfigModule } from "@nestjs/config";
 import { Boards } from "./domain/entities/boards.entity";
 import { CategoryCode } from "./domain/entities/categoryCode.entity";
 import { Comments } from "./domain/entities/comments.entity";
+import { BoardModule } from "./domain/board/board.module";
 
 @Module({
 	imports: [
@@ -24,7 +25,8 @@ import { Comments } from "./domain/entities/comments.entity";
 			entities: [Users, Boards, CategoryCode, Comments]
 		}),
 		UserModule,
-		AuthModule
+		AuthModule,
+		BoardModule
 	]
 })
 export class AppModule {}
