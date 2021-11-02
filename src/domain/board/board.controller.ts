@@ -79,7 +79,10 @@ export class BoardController {
 		);
 	}
 
-	// 게시글 검색 API
+	// // 게시글 검색 API
+	// @Get()
+	// async searchPage(
+	// 	@Query("title") title: st	// 게시글 검색 API
 	// @Get()
 	// async searchPage(
 	// 	@Query("page") page: number,
