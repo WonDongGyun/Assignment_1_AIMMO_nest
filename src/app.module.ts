@@ -3,14 +3,19 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { Users } from "./domain/entities/users.entity";
 import { UserModule } from "./domain/user/user.module";
 import { AuthModule } from "./domain/auth/auth.module";
+import { ConfigModule } from "@nestjs/config";
 
 @Module({
 	imports: [
+		ConfigModule.forRoot({
+			envFilePath: [".env"],
+			isGlobal: true
+		}),
 		TypeOrmModule.forRoot({
 			type: "mongodb",
-			url: "mongodb+srv://team13:0000@cluster0.8ii4h.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+			url: process.env.MONGO_URL,
 			port: 27017,
-			database: "team13",
+			database: process.env.MONGO_DATABASE,
 			useNewUrlParser: true,
 			useUnifiedTopology: true,
 			entities: [Users]
