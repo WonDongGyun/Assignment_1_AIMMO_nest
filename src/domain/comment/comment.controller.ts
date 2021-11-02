@@ -12,11 +12,8 @@ import {
 	UseGuards,
 	UseInterceptors
 } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
 import { SuccessCode } from "src/global/common/SuccessCode";
 import { JwtGuard } from "../auth/guards/jwtGuard.guard";
-import { Boards } from "../entities/boards.entity";
-import { Comments } from "../entities/comments.entity";
 import { CommentService } from "./comment.service";
 import { CommentDto } from "./dto/comment.dto";
 import { commentResponse } from "./dto/commentResponse.dto";
