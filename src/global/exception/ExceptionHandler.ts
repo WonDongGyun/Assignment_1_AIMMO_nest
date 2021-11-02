@@ -1,4 +1,13 @@
-import { ArgumentsHost, BadRequestException, Catch, ExceptionFilter } from "@nestjs/common";
+import {
+	ArgumentsHost,
+	BadRequestException,
+	Catch,
+	ExceptionFilter
+} from "@nestjs/common";
+import { BoardVerifyException } from "src/domain/board/exception/BoardVerifyException";
+import { NotFoundBoardException } from "src/domain/board/exception/NotFoundBoardException";
+import { NotFoundCategoryException } from "src/domain/board/exception/NotFoundCategoryException";
+import { NotFoundUserException } from "src/domain/board/exception/NotFoundUserException";
 import { UserDuplicateException } from "src/domain/user/exception/UserDuplicateException";
 import { UserUnauthorizedException } from "src/domain/user/exception/UserUnauthorized Exception";
 import { ErrorCode } from "../common/ErrorCode";
@@ -18,7 +27,7 @@ export class ExceptionHandler implements ExceptionFilter {
 
 		if (exception instanceof UserUnauthorizedException) {
 			const status = exception.getStatus();
-			const messages = exception.getResponse()['message'];
+			const messages = exception.getResponse()["message"];
 			response
 				.status(status)
 				.json(ErrorResponse.response(new ErrorCode(status, messages)));
@@ -26,11 +35,42 @@ export class ExceptionHandler implements ExceptionFilter {
 
 		if (exception instanceof BadRequestException) {
 			const status = exception.getStatus();
-			const messages = exception.getResponse()['message'];
+			const messages = exception.getResponse()["message"];
 			response
 				.status(status)
 				.json(ErrorResponse.response(new ErrorCode(status, messages)));
 		}
-		
+
+		if (exception instanceof BoardVerifyException) {
+			const status = exception.getStatus();
+			const messages = exception.getResponse()["message"];
+			response
+				.status(status)
+				.json(ErrorResponse.response(new ErrorCode(status, messages)));
+		}
+
+		if (exception instanceof NotFoundBoardException) {
+			const status = exception.getStatus();
+			const messages = exception.getResponse()["message"];
+			response
+				.status(status)
+				.json(ErrorResponse.response(new ErrorCode(status, messages)));
+		}
+
+		if (exception instanceof NotFoundCategoryException) {
+			const status = exception.getStatus();
+			const messages = exception.getResponse()["message"];
+			response
+				.status(status)
+				.json(ErrorResponse.response(new ErrorCode(status, messages)));
+		}
+
+		if (exception instanceof NotFoundUserException) {
+			const status = exception.getStatus();
+			const messages = exception.getResponse()["message"];
+			response
+				.status(status)
+				.json(ErrorResponse.response(new ErrorCode(status, messages)));
+		}
 	}
 }

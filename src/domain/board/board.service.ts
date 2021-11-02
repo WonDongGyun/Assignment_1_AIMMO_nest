@@ -176,21 +176,21 @@ export class BoardService {
 	}
 
 	// 게시글  검색
-	async searchPage(page: number, title: string) {
-		const take = 10;
-		const skip = page * 10 || 0;
-		const [pageBoard, total] = await this.boardsRepository.findAndCount({
-			order: {
-				boardId: "DESC"
-			},
-			take: take,
-			skip: skip
-		});
+	// async searchPage(page: number, title: string) {
+	// 	const take = 10;
+	// 	const skip = page * 10 || 0;
+	// 	const [pageBoard, total] = await this.boardsRepository.findAndCount({
+	// 		order: {
+	// 			boardId: "DESC"
+	// 		},
+	// 		take: take,
+	// 		skip: skip
+	// 	});
 
-		const result = pageBoard.map((board) => {
-			return this.readCount(board);
-		});
+	// 	const result = pageBoard.map((board) => {
+	// 		return this.readCount(board);
+	// 	});
 
-		return [result, total];
-	}
+	// 	return [result, total];
+	// }
 }

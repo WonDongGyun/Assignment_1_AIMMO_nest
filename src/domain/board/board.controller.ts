@@ -80,14 +80,14 @@ export class BoardController {
 	}
 
 	// 게시글 검색 API
-	@Get()
-	async searchPage(
-		@Query("page") page: number,
-		@Query("title") title: string
-	) {
-		return BoardResponse.return(
-			SuccessCode.getPost(),
-			await this.boardService.searchPage(page, title)
-		);
-	}
+	// @Get()
+	// async searchPage(
+	// 	@Query("page") page: number,
+	// 	@Query("title") title: string
+	// ) {
+	// 	return BoardResponse.return(
+	// 		SuccessCode.getPost(),
+	// 		await this.boardService.searchPage(page, title)
+	// 	);
+	// }
 }
