@@ -8,6 +8,7 @@ import { Boards } from "./domain/entities/boards.entity";
 import { CategoryCode } from "./domain/entities/categoryCode.entity";
 import { Comments } from "./domain/entities/comments.entity";
 import { BoardModule } from "./domain/board/board.module";
+import { CommentModule } from "./domain/comment/comment.module";
 
 @Module({
 	imports: [
@@ -26,7 +27,8 @@ import { BoardModule } from "./domain/board/board.module";
 		}),
 		UserModule,
 		AuthModule,
-		BoardModule
+		BoardModule,
+		CommentModule
 	]
 })
 export class AppModule {}
