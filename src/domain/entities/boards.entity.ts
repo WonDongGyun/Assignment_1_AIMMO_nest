@@ -22,6 +22,12 @@ export class Boards {
 	boardId!: number;
 
 	@Column({ type: "varchar" })
+	userId!: string;
+
+	@Column({ type: "number" })
+	categoryCode!: number;
+
+	@Column({ type: "varchar" })
 	title!: string;
 
 	@Column({ type: "varchar" })
@@ -29,23 +35,6 @@ export class Boards {
 
 	@Column({ type: "varchar" })
 	readUser!: object;
-
-	@OneToMany(() => Comments, (comments) => comments.boards, {
-		onDelete: "CASCADE"
-	})
-	comments?: Comment[];
-
-	@ManyToOne(() => Users, (users) => users.boards, { lazy: true })
-	@JoinColumn([{ name: "userId", referencedColumnName: "userId" }])
-	users: Users;
-
-	@ManyToOne(() => CategoryCode, (categoryCode) => categoryCode.boards, {
-		lazy: true
-	})
-	@JoinColumn([
-		{ name: "categoryCode", referencedColumnName: "categoryCode" }
-	])
-	categoryCode: CategoryCode;
 
 	@CreateDateColumn({ type: "datetime" })
 	createdDt: Date;

@@ -20,25 +20,20 @@ export class Comments {
 	@Column({ type: "number" })
 	commentId: number;
 
-	@Column({ type: "int" })
+	@Column({ type: "varchar" })
+	userId!: string;
+
+	@Column({ type: "number" })
+	boardId!: number;
+
+	@Column({ type: "number" })
+	parentId!: number;
+
+	@Column({ type: "number" })
 	depth!: number;
 
 	@Column({ type: "varchar" })
 	contents!: string;
-
-	@ManyToOne(() => Users, (users) => users.comments, { lazy: true })
-	@JoinColumn([{ name: "userId", referencedColumnName: "userId" }])
-	users: Users;
-
-	@ManyToOne(() => Boards, (boards) => boards.comments, { lazy: true })
-	@JoinColumn([{ name: "boardId", referencedColumnName: "boardId" }])
-	boards: Boards;
-
-	@ManyToOne(() => Comments, (comments) => comments.childId)
-	@JoinColumn([{ name: "parentId", referencedColumnName: "commentId" }])
-	parentId!: number;
-	@OneToMany(() => Comments, (comments) => comments.parentId)
-	childId!: number;
 
 	@CreateDateColumn({ type: "datetime" })
 	createdDt: Date;
