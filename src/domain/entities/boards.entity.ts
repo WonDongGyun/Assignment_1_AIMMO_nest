@@ -2,16 +2,10 @@ import {
 	Column,
 	CreateDateColumn,
 	Entity,
-	JoinColumn,
-	ManyToOne,
 	ObjectID,
 	ObjectIdColumn,
-	OneToMany,
 	UpdateDateColumn
 } from "typeorm";
-import { CategoryCode } from "./categoryCode.entity";
-import { Comments } from "./comments.entity";
-import { Users } from "./users.entity";
 
 @Entity("boards")
 export class Boards {
@@ -34,7 +28,7 @@ export class Boards {
 	contents!: string;
 
 	@Column({ type: "varchar" })
-	readUser!: object;
+	readUser?: object;
 
 	@CreateDateColumn({ type: "datetime" })
 	createdDt: Date;

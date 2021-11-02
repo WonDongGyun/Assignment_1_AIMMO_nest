@@ -22,4 +22,37 @@ export class SuccessCode {
 	public static login() {
 		return new SuccessCode(200, "로그인에 성공했습니다.");
 	}
+
+	public static createPost() {
+		return new SuccessCode(201, "게시글이 등록되었습니다.");
+	}
+
+	public static updatePost() {
+		return new SuccessCode(201, "수정되었습니다.");
+	}
+
+	public static deletePost() {
+		return new SuccessCode(200, "삭제되었습니다.");
+	}
+
+	public static getPost() {
+		return new SuccessCode(200, "성공했습니다.");
+	}
+
+	// 댓글
+	public static writeComment() {
+		return new SuccessCode(201, "댓글이 등록되었습니다.");
+	}
+
+	public static updateComment() {
+		return new SuccessCode(200, "댓글이 수정되었습니다.");
+	}
+
+	public static deleteComment() {
+		return new SuccessCode(200, "댓글이 삭제되었습니다.");
+	}
+
+	public static getComment() {
+		return new SuccessCode(200, "성공했습니다.");
+	}
 }

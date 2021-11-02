@@ -4,6 +4,7 @@ import { Repository } from "typeorm";
 import { Users } from "../entities/users.entity";
 import * as bcrypt from "bcrypt";
 import { JwtService } from "@nestjs/jwt";
+import { UserUnauthorizedException } from "../user/exception/UserUnauthorized Exception";
 
 @Injectable()
 export class AuthService {
@@ -22,7 +23,7 @@ export class AuthService {
 			!user ||
 			(user && !(await bcrypt.compare(password, user.password)))
 		) {
-			return null;
+			throw new UserUnauthorizedException();
 		}
 
 		return user;

@@ -2,15 +2,10 @@ import {
 	Column,
 	CreateDateColumn,
 	Entity,
-	JoinColumn,
-	ManyToOne,
 	ObjectID,
 	ObjectIdColumn,
-	OneToMany,
 	UpdateDateColumn
 } from "typeorm";
-import { Users } from "./users.entity";
-import { Boards } from "./boards.entity";
 
 @Entity("comments")
 export class Comments {
@@ -26,8 +21,8 @@ export class Comments {
 	@Column({ type: "number" })
 	boardId!: number;
 
-	@Column({ type: "number" })
-	parentId!: number;
+	@Column({ type: "number", default: null })
+	parentId?: number;
 
 	@Column({ type: "number" })
 	depth!: number;
