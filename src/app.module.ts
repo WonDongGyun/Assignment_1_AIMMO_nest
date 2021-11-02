@@ -4,6 +4,9 @@ import { Users } from "./domain/entities/users.entity";
 import { UserModule } from "./domain/user/user.module";
 import { AuthModule } from "./domain/auth/auth.module";
 import { ConfigModule } from "@nestjs/config";
+import { Boards } from "./domain/entities/boards.entity";
+import { CategoryCode } from "./domain/entities/categoryCode.entity";
+import { Comments } from "./domain/entities/comments.entity";
 
 @Module({
 	imports: [
@@ -18,7 +21,7 @@ import { ConfigModule } from "@nestjs/config";
 			database: process.env.MONGO_DATABASE,
 			useNewUrlParser: true,
 			useUnifiedTopology: true,
-			entities: [Users]
+			entities: [Users, Boards, CategoryCode, Comments]
 		}),
 		UserModule,
 		AuthModule

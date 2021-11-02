@@ -18,4 +18,8 @@ export class SuccessCode {
 	public static createUser() {
 		return new SuccessCode(201, "회원가입에 성공했습니다.");
 	}
+
+	public static login() {
+		return new SuccessCode(200, "로그인에 성공했습니다.");
+	}
 }

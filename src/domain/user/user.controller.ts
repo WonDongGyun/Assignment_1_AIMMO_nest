@@ -34,7 +34,7 @@ export class UserController {
 	@Post("signin")
 	async login(@Request() req) {
 		return new UserResponse(
-			SuccessCode.createUser(),
+			SuccessCode.login(),
 			this.authService.makeToken(req.user)
 		);
 	}

@@ -4,8 +4,11 @@ import {
 	Entity,
 	ObjectID,
 	ObjectIdColumn,
+	OneToMany,
 	UpdateDateColumn
 } from "typeorm";
+import { Boards } from "./boards.entity";
+import { Comments } from "./comments.entity";
 
 @Entity("users")
 export class Users {
@@ -20,6 +23,16 @@ export class Users {
 
 	@Column({ type: "varchar" })
 	userName!: string;
+
+	@OneToMany(() => Boards, (boards) => boards.users, {
+		onDelete: "CASCADE"
+	})
+	boards?: Boards[];
+
+	@OneToMany(() => Comments, (comments) => comments.users, {
+		onDelete: "CASCADE"
+	})
+	comments?: Comment[];
 
 	@CreateDateColumn({ type: "datetime" })
 	createdDt: Date;
