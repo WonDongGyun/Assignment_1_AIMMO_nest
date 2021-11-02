@@ -25,6 +25,6 @@ export class UserService {
 		users.userName = createUserDto.userName;
 
 		await this.usersRepository.save(users);
-		return await this.authService.makeToken(users);
+		return this.authService.makeToken(users);
 	}
 }

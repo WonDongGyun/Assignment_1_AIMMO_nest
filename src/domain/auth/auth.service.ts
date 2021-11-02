@@ -13,7 +13,7 @@ export class AuthService {
 		private jwtService: JwtService
 	) {}
 
-	async validateUser(userId: string, password: string) {
+	async validateUser(userId: string, password: string): Promise<Users> {
 		const user = await this.usersRepository.findOne({
 			userId: userId
 		});
@@ -28,8 +28,8 @@ export class AuthService {
 		return user;
 	}
 
-	makeToken(user: Users) {
+	makeToken(user: Users): string {
 		const payload = { userId: user.userId, userName: user.userName };
-		return { token: this.jwtService.sign(payload) };
+		return this.jwtService.sign(payload);
 	}
 }
