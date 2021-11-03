@@ -111,40 +111,6 @@ body {
 
 <br/><br/>
 
-> ### 게시글 생성 `POST` /board
-
-## `Request`
-|**Input**|**Type**|**Description**|
-|--|--|--|
-|title, contents, categoryCode | string, string, string| 로그인 한 사용자가 게시글을 작성합니다. |
-
-```json
-header: {
-    Authorization: "bearer eyJhbGciOi6IkpX ..."
-}
-
-body {
-    title
-    contents
-    categoryCode
-}
-```
-
-## `Response`
-|**HTTP Method**|**HTTP Status Code**|**Description**|
-|--|--|--|
-|```POST```|```201:Created```<br/>```401:Unathorized```|게시글이 등록되었습니다.<br>로그인이 필요합니다.|
-
-```json
-{
-   success:true
-   statusCode: 201,
-   message:"게시글이 등록되었습니다."
-}
-```
-
-<br/><br/>
-
 > ### 게시글 수정 `PATCH` /board/:boardId
 
 ## `Request`
