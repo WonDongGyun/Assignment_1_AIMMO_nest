@@ -62,6 +62,18 @@ http://www.makevalue.net:3000
 <br/>
 
 
+📓 프로젝트 TIL 블로그 주소
+-------------------------------
+- [김효민](https://github.com/luckyhyom) - 　　　
+- [이나영](https://github.com/bokiri409) - 
+- [원동균](https://github.com/WonDongGyun) - [티스토리 블로그](https://tristy.tistory.com/41)
+
+
+<br/>
+<br/>
+
+
+
 🏫 사용한 라이브러리
 -------------------------------
 - **Nest JS**  　　　
