@@ -3,7 +3,7 @@
 - version 1.0.0
 - sever
   - local server : http://localhost:3000/api
-  - deploy sever : 
+  - deploy sever : http://www.makevalue.net:3000/api
 
 <br/>
 
