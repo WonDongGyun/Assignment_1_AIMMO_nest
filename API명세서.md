@@ -326,6 +326,9 @@ params : commentId
 |```GET```|```200:OK```<br/>```403:Forbidden<br/>```404:NotFound```|삭제되었습니다.<br/>권한이 없습니다.<br/>존재하지 않는 댓글입니다.|
 
 ```json
+   success:true,
+   statusCode: 200,
+   message:"댓글이 삭제되었습니다.",
 ```
 
 <br/><br/>
@@ -356,6 +359,9 @@ body {
 
 ```json
 body { 
+  success:true,
+  statusCode: 200,
+  message:"댓글이 수정되었습니다.",
   contents,
   "data": {
        댓글 정보...
@@ -387,7 +393,7 @@ query : boardId, parentId, pageNo, pageSize
    statusCode: 200,
    message:"성공했습니다.",
    data: {
-      대댓글 정보
+      댓글 정보...
    }
 }
 ```
