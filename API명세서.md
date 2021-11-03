@@ -270,3 +270,121 @@ params : pageNo
    }
 }
 ```
+
+<br/><br/>
+
+## 🎲댓글/대댓글 API
+> ### 댓글 생성하기 `POST` /comment
+
+## `Request`
+|**Input**|**Type**|**Description**|
+|--|--|--|
+|boardId, contents, depth|number, string, number| 로그인 한 사용자가 해당 게시글에 댓글을 작성합니다. |
+
+```json
+header: {
+    Authorization: "bearer eyJhbGciOi6IkpX ..."
+}
+
+body: {
+    "boardId": "", 
+    "contents":"",
+     depth:  1
+}
+```
+
+## `Response`
+|**HTTP Method**|**HTTP Status Code**|**Description**|
+|--|--|--|
+|```POST```|```201:Created```<br/>```401:Unauthorized```|댓글이 등록되었습니다.<br/>권한이 없습니다.|
+
+```json
+{
+   success:true
+   statusCode: 201,
+   message:"댓글이 등록되었습니다."
+}
+```
+
+<br/><br/>
+
+> ### 댓글 읽기 `GET` /comment?boardId&pageNo=0
+
+## `Request`
+|**Input**|**Type**|**Description**|
+|--|--|--|
+|boardId, pageNo|number, string, number|해당 게시글의 댓글 목록을 가져옵니다. |
+
+```json
+query : boardId, pageNo
+```
+
+## `Response`
+|**HTTP Method**|**HTTP Status Code**|**Description**|
+|--|--|--|
+|```GET```|```200:OK```<br/>```404:NotFound```|성공했습니다.<br/>존재하지 않는 페이지입니다.|
+
+```json
+{
+   success:true
+   statusCode: 200,
+   message:"성공했습니다."
+}
+```
+
+<br/><br/>
+
+> ### 댓글 삭제 `DELETE` /comment/:boardId
+
+## `Request`
+|**Input**|**Type**|**Description**|
+|--|--|--|
+|commentId|number|해당 댓글을 작성한 사용자가 댓글을 삭제합니다. |
+
+```json
+header: {
+    Authorization: "bearer eyJhbGciOi6IkpX ..."
+}
+
+params : commentId
+```
+
+## `Response`
+|**HTTP Method**|**HTTP Status Code**|**Description**|
+|--|--|--|
+|```GET```|```200:OK```<br/>```403:Forbidden<br/>```404:NotFound```|삭제되었습니다.<br/>권한이 없습니다.<br/>존재하지 않는 댓글입니다.|
+
+```json
+```
+
+<br/><br/>
+
+> ### 댓글 수정 `PATCH` /comment/:boardId
+
+## `Request`
+|**Input**|**Type**|**Description**|
+|--|--|--|
+|commentId, contents|number, string|해당 댓글을 작성한 사용자가 댓글을 수정합니다. |
+
+```json
+header: {
+    Authorization: "bearer eyJhbGciOi6IkpX ..."
+}
+
+params : commentId
+
+body {
+    contents, 
+}
+```
+
+## `Response`
+|**HTTP Method**|**HTTP Status Code**|**Description**|
+|--|--|--|
+|```GET```|```200:OK```<br/>```403:Forbidden<br/>```404:NotFound```|수정되었습니다.<br/>권한이 없습니다.<br/>존재하지 않는 댓글입니다.|
+
+```json
+body { 
+  contents
+}
+```
