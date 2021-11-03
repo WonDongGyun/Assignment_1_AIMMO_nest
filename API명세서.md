@@ -388,3 +388,63 @@ body {
   contents
 }
 ```
+
+<br/><br/>
+
+> ### 대댓글 읽기 `GET` /comment/recomment
+
+## `Request`
+|**Input**|**Type**|**Description**|
+|--|--|--|
+|boardId, contents, parentId, depth|number, string, number, number| 해당 댓글에 달린 대댓글을 가져옵니다. |
+
+```json
+query : boardId, parentId, pageNo, pageSize
+```
+
+## `Response`
+|**HTTP Method**|**HTTP Status Code**|**Description**|
+|--|--|--|
+|```GET```|```200:OK```<br/>```404:NotFound```|성공했습니다.<br/>존재하지 않는 댓글입니다.|
+
+```json
+{
+   maxPageNum,
+   commentList
+}
+```
+
+<br/><br/>
+
+> ### 대댓글 생성하기 `POST` /comment/recomment
+
+## `Request`
+|**Input**|**Type**|**Description**|
+|--|--|--|
+|boardId, contents, parentId, depth|number, string, number, number| 해당 댓글에 달린 대댓글을 가져옵니다. |
+
+```json
+header: {
+    Authorization: "bearer eyJhbGciOi6IkpX ..."
+}
+
+body: {
+    "boardId": "", 
+    "content": "",
+    parentId,
+    depth:2
+}
+```
+
+## `Response`
+|**HTTP Method**|**HTTP Status Code**|**Description**|
+|--|--|--|
+|```POST```|```201:Created```<br/>```401:Unathorized```|성공했습니다.<br/>로그인이 필요합니다.|
+
+```json
+{
+   success:true
+   statusCode: 201,
+   message:"댓글이 등록되었습니다."
+}
+```
