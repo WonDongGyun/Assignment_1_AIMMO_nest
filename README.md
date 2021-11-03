@@ -94,8 +94,8 @@ http://www.makevalue.net:3000
   ❌ 게시글 검색 기능
   
   ❌ Unit Test
-      ✔ user, auth 관련 테스트
-      ✖ board, comments 관련 테스트
+      ✔ user, auth, board 관련 테스트
+      ✖ comments 관련 테스트
   
 ```
 
