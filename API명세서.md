@@ -209,15 +209,15 @@ params : boardId
 
 <br/><br/>
 
-> ### 게시글 목록 가져오기 `GET` /board/?pageNo=0
+> ### 게시글 목록 가져오기 `GET` /board/?page=0
 
 ## `Request`
 |**Input**|**Type**|**Description**|
 |--|--|--|
-|pageNo|number| 해당 게시글의 모든 목록을 가져옵니다. |
+|page|number| 해당 게시글의 모든 목록을 가져옵니다. |
 
 ```json
-params : pageNo
+params : page
 ```
 
 ## `Response`
@@ -230,7 +230,6 @@ params : pageNo
    success:true
    statusCode: 200,
    message:"성공했습니다.",
-   maxPageNo,
    data: {
       게시글 목록 정보
    }
@@ -268,7 +267,10 @@ body: {
 {
    success:true
    statusCode: 201,
-   message:"댓글이 등록되었습니다."
+   message:"댓글이 등록되었습니다.",
+   "data": {
+       댓글 정보...
+   }
 }
 ```
 
@@ -294,7 +296,10 @@ query : boardId, pageNo
 {
    success:true
    statusCode: 200,
-   message:"성공했습니다."
+   message:"성공했습니다.",
+   "data": {
+       댓글 정보...
+   }
 }
 ```
 
@@ -340,7 +345,7 @@ header: {
 params : commentId
 
 body {
-    contents, 
+    contents
 }
 ```
 
@@ -351,13 +356,16 @@ body {
 
 ```json
 body { 
-  contents
+  contents,
+  "data": {
+       댓글 정보...
+   }
 }
 ```
 
 <br/><br/>
 
-> ### 대댓글 읽기 `GET` /comment/recomment
+> ### 대댓글 읽기 `GET` /comment/recomment?parentId&page=0
 
 ## `Request`
 |**Input**|**Type**|**Description**|
@@ -375,8 +383,12 @@ query : boardId, parentId, pageNo, pageSize
 
 ```json
 {
-   maxPageNum,
-   commentList
+   success:true,
+   statusCode: 200,
+   message:"성공했습니다.",
+   data: {
+      대댓글 정보
+   }
 }
 ```
 
@@ -412,5 +424,8 @@ body: {
    success:true
    statusCode: 201,
    message:"댓글이 등록되었습니다."
+   data: {
+      댓글 정보...
+   }
 }
 ```
