@@ -64,7 +64,7 @@ http://www.makevalue.net:3000
 
 📓 프로젝트 TIL 블로그 주소
 -------------------------------
-- [김효민](https://github.com/luckyhyom) - 　　　
+- [김효민](https://github.com/luckyhyom) - [티스토리 블로그](https://baejjang.tistory.com/3)　
 - [이나영](https://github.com/bokiri409) - 
 - [원동균](https://github.com/WonDongGyun) - [티스토리 블로그](https://tristy.tistory.com/41)
 
