@@ -29,7 +29,7 @@
 🛠 프로젝트 빌드 및 서버 실행 방법  
 -------------------------------
 
-[env파일 작성법] https://github.com/preOnboarding-Team13/Assignment_1_AIMMO_nest/wiki/env-%EC%9E%91%EC%84%B1
+[env파일 작성법](https://github.com/preOnboarding-Team13/Assignment_1_AIMMO_nest/wiki/env-%EC%9E%91%EC%84%B1)
 
 <br/>
 <br/>
