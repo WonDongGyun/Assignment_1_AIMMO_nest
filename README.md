@@ -215,13 +215,27 @@ http://www.makevalue.net:3000
 
 API 요청에 성공하면 그에 해당하는 공통된 응답을 주도록 Success Response 객체를 만들어서 해당 형태로 반환하게끔 하였습니다. 
 기본적으로 포함되는 필드는 success(성공 유무), statusCode(HTTP 상태 코드), message(HTTP 응답 메시지 혹은 반환 메시지)이며 필요에 따라 data 필드를 추가하여 
-해당 필드에 데이터를 반환하도록 하였습니다.    
-    
-    
-반대로, 오류가 날 경우는 Error Response 객체를 사용하여 해당 형태로 반환하게끔 하였습니다. 기본적으로 포함되는 필드는 Success Response와 같습니다.  
-Nest Js에서 제공해주는 ExceptionFilter와 globalFilter 기능을 사용하여 필요한 곳에 ExceptionFilter 기능을 사용할 수 있게 하였습니다. 
-이렇게 함으로서 각각의 컨트롤러에서 처리해야 했던 오류를 한 곳에서 처리함으로서, 코드 관리를 좀 더 편하게 할 수 있습니다.
+해당 필드에 데이터를 반환하도록 하였습니다. 같이 프로젝트를 한 효민님이 공통 응답은 좋지만 그래도 controller API 마다 응답이 다른 경우가 있을 수도 있으니 분리하는 것이 좋을 것 같다고 의견을 주셔서 도메인마다 다른 응답 타입을 만들어 두었습니다.  
 
 <br/>
+
+ <p align="center"><img src="https://user-images.githubusercontent.com/52685665/144261811-b26893e0-fb5a-4005-b5a4-0b399be68c28.png"></p>   
+ 
+<br/>
+    
+반대로, 오류가 날 경우는 Error Response 객체를 사용하여 해당 형태로 반환하게끔 하였습니다. 기본적으로 포함되는 필드는 Success Response와 같습니다.  
+
+<br/>
+
+Nest Js에서 제공해주는 ExceptionFilter와 globalFilter 기능을 사용하여 필요한 곳에 ExceptionFilter 기능을 사용할 수 있게 하였습니다. 그리고 성공시와 실패했을 때의 HTTP Code와 HTTP Message를 관리할 수 있는 SuccessCode, ErrorCode를 만들었습니다. HTTP 통신에서는 에러가 나거나 성공 시 해당 코드와 메시지를 반환하는데 왜 코드와 메시지를 개발자가 설정한 값으로 나가게 구현했냐하면, 성공 시에는 이게 어떤 API 통신으로 왔는지 모를 때가 있고 HTTP 에러코드로 같이 나가는 메시지는 가끔 보면 "그래서 왜 이게 문제인건데?" 라는 생각이 들기 때문입니다. 그래서 백엔드 개발자가 해당 메시지를 상세하게 작성해 준다면 같이 개발자들이 협업을 하는데 훨씬 편해지지 않을까라고 생각하였습니다. 그리고 이런 코드랑 메시지를 각각의 컨트롤러에서 처리해야 했던 오류를 한 곳에서 처리함으로서, 코드 관리를 좀 더 편하게 할 수 있습니다.
+
+<br/>
+
+ <p align="center"><img src="https://user-images.githubusercontent.com/52685665/144265041-e6f2bb07-7c3e-4996-942f-9215c81de3b0.png"></p>   
+
+<br/>
+
+**3) 인증 및 인가 기능을 만들어보자.**
+
 
 
