@@ -1,5 +1,8 @@
 # 📕 Assignment AIMMO ft.Nest JS 
 
+이 Read.me에는 제가 무엇을 했는지만 적혀있습니다. 팀 전체가 무엇을 했는지 궁금하시다면 하단의 링크를 참조해주세요.    
+[Assignment_1_AIMMO 팀 Repository](https://github.com/preOnboarding-Team13/Assignment_1_AIMMO_nest)
+
 <br/>
 <br/>
 
@@ -89,8 +92,6 @@ http://www.makevalue.net:3000
 
 📓 프로젝트 TIL 블로그 주소
 -------------------------------
-- [김효민](https://github.com/luckyhyom) - [티스토리 블로그](https://baejjang.tistory.com/3)　
-- [이나영](https://github.com/bokiri409) - [벨로그](https://velog.io/@bokiri409/%ED%94%84%EB%A6%AC%EC%98%A8%EB%B3%B4%EB%94%A9-%EB%B0%B1%EC%97%94%EB%93%9C-%EC%BD%94%EC%8A%A4-AIMMO-%ED%9B%84%EA%B8%B0)
 - [원동균](https://github.com/WonDongGyun) - [티스토리 블로그](https://tristy.tistory.com/41)
 
 
@@ -189,20 +190,28 @@ http://www.makevalue.net:3000
 <br/>
 <br/>
 
-🧪 구현 방법 & 이유
+🧪 내가 이번 프로젝트에서 무엇을 했지?
 -----------------  
 
 <br/>
 <br/>
 
-**1) .env 사용한 환경 변수 관리**
+**1) Commit 메시지를 남기기 시작하다.**
 
-config 라이브러리를 사용하여 .env를 통해 환경 변수를 관리하였습니다. 보안에 민감한 jwt secret key, database URL 등의 값들을 관리합니다.
-보통은 .gitignore에 설정하여 깃허브에 담기지 않게 하지만 test를 하기 위해서는 필요하다고 생각하여 포함하였습니다.  
-  
+프리온보딩 이전의 코드를 보면 그저 커밋만 하고 메시지를 자세히 남기지는 않았습니다. 깃 커밋 메시지가 그렇게 중요하다고 생각을 못했었거든요. 하지만 이번 프로젝트에서 커밋 메시지를 남기기 시작하면서, 시간이 지나도 스스로가 어떤 작업을 했는지 알 수 있게 됐고, 프로젝트의 작업 흐름을 전체적으로 볼 수 있게 됐습니다. 앞으로도 커밋을 할 때는 꼭 커밋 메시지를 남길 것 같습니다.    
+
+커밋 메시지 규칙은 다음의 [블로그 글](https://overcome-the-limits.tistory.com/entry/%ED%98%91%EC%97%85-%ED%98%91%EC%97%85%EC%9D%84-%EC%9C%84%ED%95%9C-%EA%B8%B0%EB%B3%B8%EC%A0%81%EC%9D%B8-git-%EC%BB%A4%EB%B0%8B%EC%BB%A8%EB%B2%A4%EC%85%98-%EC%84%A4%EC%A0%95%ED%95%98%EA%B8%B0)을 참조하였습니다. 
+
+<p align="center"><img src="https://user-images.githubusercontent.com/52685665/144249036-eaf619f6-385d-42b8-970e-3582f5032629.png"></p>
+
+<br/>
 <br/>
   
-**2) 공통 응답 관리**
+**2) 공통 응답 관리를 해보지 않을래?**
+
+예전에 프론트 엔드와 함께 작업하다가 성공 했을 때의 응답과 실패 했을 때의 응답이 조금 달랐던 부분이 있었는데, 그 사소한 부분 때문에 프론트 엔드 쪽 코드가 많이 수정됐던 적이 있습니다. 그때 성공했을 때와 실패했을 때 응답을 통일해서 전송해주면 괜찮지 않을까란 생각만 하고 실천을 못했었는데, 요번 프로젝트 때 구현해보기로 했습니다. 
+
+<br/>
 
 API 요청에 성공하면 그에 해당하는 공통된 응답을 주도록 Success Response 객체를 만들어서 해당 형태로 반환하게끔 하였습니다. 
 기본적으로 포함되는 필드는 success(성공 유무), statusCode(HTTP 상태 코드), message(HTTP 응답 메시지 혹은 반환 메시지)이며 필요에 따라 data 필드를 추가하여 
@@ -214,31 +223,5 @@ Nest Js에서 제공해주는 ExceptionFilter와 globalFilter 기능을 사용�
 이렇게 함으로서 각각의 컨트롤러에서 처리해야 했던 오류를 한 곳에서 처리함으로서, 코드 관리를 좀 더 편하게 할 수 있습니다.
 
 <br/>
-
-**3) TypeOrm 사용**
-
-저희 팀에서 아무래도 가장 많이 사용해보았고 익숙했던 TypeOrm을 사용하여 MongoDB와 연결하였습니다. 처음에는 프로젝트하는데 무리가 없었으나 프로젝트가 진행될 수록
-TypeOrm이 MongoDB와 잘 맞지 않는 ORM이라는 것을 깨닫게 되었습니다.  
-TypeOrm의 경우 기본적으로 MongoDB를 3.7 버전까지밖에 지원을 해주지 않으며, TypeOrm의 
-강력한 기능 중 하나인 Query Builder 기능도 제공되지 않았습니다. 때문에 정해진 시간내에 구현할 수 있는 기능이 제한되었고, Query Builder를 사용하면 편하게
-구현할 수 있는 검색 기능을 구현하지 못하였습니다. 
-
-<br/>
-
-그 외에도 [MONGODB DRIVER] Warning 오류를 해결하지 못하였습니다. 비록 프로젝트를 완벽하게 완성하지는 못하였으나, 
-TypeOrm에 대해 더욱 알 수 있었습니다. 앞으로는 MongoDB와 사용할 때는 Mongoose를 사용하는 것이 좋을 것 같다고 생각하였습니다.
-
-<br/>
-
-**4) ERD 설계**
-
-기존의 user 1 : board M 의 관계에서 추가 요구사항으로 댓글과 대댓글 기능, 게시글에 카데고리 추가가 있었기 때문에 comments, categorycode 테이블을 만들었습니다. 
-categorycode 테이블의 경우 category를 생성하는 API는 존재하지 않기 때문에 미리 데이터를 넣어 두었습니다. comments 테이블은 boards 테이블과 1: M의 관계를 맺으며
-대댓글 기능을 위해 self join이 필요하기 때문에 자기 자신과 1 : M의 관계를 맺도록 설정하였습니다.  
-
-<br/>
-
-다만, TypeOrm이 MongoDB와 잘 맞는 ORM이 아니고 애초에 MongoDB가 비관계형 데이터베이스였기 때문에 TypeOrm의 one To many , many to one 설정을 제거하고 단순하게 컬럼으로 만들었습니다. 
-
 
 
