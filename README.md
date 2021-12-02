@@ -6,6 +6,14 @@
 <br/>
 <br/>
 
+📓 프로젝트 TIL 블로그 주소
+-------------------------------
+- [원동균](https://github.com/WonDongGyun) - [티스토리 블로그](https://tristy.tistory.com/41)
+
+
+<br/>
+<br/>
+
 😎 과제 내용 
 -------------------------------
 
@@ -77,27 +85,6 @@ http://www.makevalue.net:3000
 
 <br/>
 <br/>
-
-
-👩‍🔬 함께한 팀원
--------------------------------
-- [김효민](https://github.com/luckyhyom) - Unit Test 작성, 서비스 배포 　　　
-- [이나영](https://github.com/bokiri409) - 댓글 및 대댓글 CRUD 작성
-- [원동균](https://github.com/WonDongGyun) - 인증 및 인가 구현, 게시글 CRUD 작성
-- 공통 - 공통 응답 및 에러 처리, 사용자 CRUD 작성
-
-<br/>
-<br/>
-
-
-📓 프로젝트 TIL 블로그 주소
--------------------------------
-- [원동균](https://github.com/WonDongGyun) - [티스토리 블로그](https://tristy.tistory.com/41)
-
-
-<br/>
-<br/>
-
 
 
 🏫 사용한 라이브러리
